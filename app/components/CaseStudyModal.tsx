@@ -76,7 +76,9 @@ export default function CaseStudyModal({ project, isOpen, onClose }: CaseStudyMo
     }
   };
 
-  const details = caseStudyDetails[project.id as keyof typeof caseStudyDetails];
+  if (!project) return null;
+const details = caseStudyDetails[project.id as keyof typeof caseStudyDetails];
+
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto">
