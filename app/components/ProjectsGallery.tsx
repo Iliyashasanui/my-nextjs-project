@@ -134,7 +134,7 @@ export default function ProjectsGallery() {
           {projects.map((project, index) => (
             <div
               key={project.id}
-              ref={(el) => (projectRefs.current[index] = el)}
+              ref={(el) => { projectRefs.current[index] = el; }}
               data-index={index}
               className={`group bg-[#1A1A1A] border border-[#2A2A2A] rounded-2xl overflow-hidden hover:border-[#2AA1E7]/30 transition-all duration-700 hover:scale-[1.02] hover:shadow-2xl hover:shadow-[#2AA1E7]/5 ${visibleProjects.has(index) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
             >
