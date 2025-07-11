@@ -4,9 +4,20 @@
 import { useState, useEffect, useRef } from 'react';
 import CaseStudyModal from './CaseStudyModal';
 
+type Project = {
+  id: number;
+  title: string;
+  platform: string;
+  role: string;
+  impact: string;
+  description: string;
+  image: string;
+};
+
+
 export default function ProjectsGallery() {
   const [visibleProjects, setVisibleProjects] = useState(new Set());
-  const [selectedProject, setSelectedProject] = useState(null);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const projectRefs = useRef([]);
 
@@ -95,10 +106,10 @@ export default function ProjectsGallery() {
 }, []);
 
 
-  const handleReadCaseStudy = (project) => {
-    setSelectedProject(project);
-    setIsModalOpen(true);
-  };
+  const handleReadCaseStudy = (project: Project) => {
+  setSelectedProject(project);
+  setIsModalOpen(true);
+};
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
