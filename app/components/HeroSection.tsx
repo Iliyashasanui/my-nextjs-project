@@ -174,7 +174,7 @@ export default function HeroSection() {
         {/* Typing Animation Description */}
         <div className="mb-12 h-16 flex items-center justify-center">
           <p className="text-lg text-[#EAEAEA]/80 max-w-2xl mx-auto font-mono">
-            <span className="inline-block animate-pulse">></span> Creating digital experiences that matter
+            <span className="inline-block animate-pulse">&gt;&lt;</span> Creating digital experiences that matter
             <span className="inline-block w-2 h-5 bg-[#2AA1E7] ml-1 animate-ping"></span>
           </p>
         </div>
