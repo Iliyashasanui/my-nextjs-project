@@ -67,29 +67,33 @@ export default function ProjectsGallery() {
     }
   ];
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-  const dataIndex = entry.target.getAttribute('data-index');
-  if (dataIndex !== null) {
-    const index = parseInt(dataIndex);
-    setVisibleProjects(prev => new Set([...prev, index]));
-  }
-}
+ useEffect(() => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const dataIndex = entry.target.getAttribute('data-index');
+          if (dataIndex !== null) {
+            const index = parseInt(dataIndex);
+            setVisibleProjects((prev) => new Set([...prev, index]));
           }
-        });
-      },
-      { threshold: 0.2 }
-    );
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
 
+  projectRefs.current.forEach((ref) => {
+    if (ref) observer.observe(ref);
+  });
+
+  return () => {
     projectRefs.current.forEach((ref) => {
-      if (ref) observer.observe(ref);
+      if (ref) observer.unobserve(ref);
     });
+  };
+}, []);
 
-    return () => observer.disconnect();
-  }, []);
 
   const handleReadCaseStudy = (project) => {
     setSelectedProject(project);
