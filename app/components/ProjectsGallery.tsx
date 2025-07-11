@@ -72,7 +72,11 @@ export default function ProjectsGallery() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const index = parseInt(entry.target.getAttribute('data-index'));
+            const dataIndex = entry.target.getAttribute('data-index');
+if (dataIndex !== null) {
+  const index = parseInt(dataIndex);
+  setVisibleProjects(prev => new Set([...prev, index]));
+}
             setVisibleProjects(prev => new Set([...prev, index]));
           }
         });
