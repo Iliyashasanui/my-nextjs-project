@@ -19,7 +19,7 @@ export default function ProjectsGallery() {
   const [visibleProjects, setVisibleProjects] = useState(new Set());
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const projectRefs = useRef([]);
+  const projectRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const projects = [
     {
