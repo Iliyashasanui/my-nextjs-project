@@ -11,7 +11,7 @@ interface CaseStudyModalProps {
     impact: string;
     description: string;
     image: string;
-  };
+  } | null; // ← ✅ Add this `| null`
   isOpen: boolean;
   onClose: () => void;
 }
